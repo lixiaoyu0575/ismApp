@@ -14,7 +14,7 @@ var jshint = require('gulp-jshint');
 
 //****** Run tasks in parallel ******//
 gulp.task('default',function(){
-	gulp.run('minifyHTML','transferResources','watchChanges', 'compressImages','jshint');
+	gulp.run('minifyHTML','transferResources', 'compressImages','jshint');
 });
 
 
