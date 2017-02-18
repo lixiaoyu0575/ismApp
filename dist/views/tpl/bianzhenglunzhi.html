@@ -1,0 +1,169 @@
+<style>.gridStyle {
+        border: 1px solid rgb(212,212,212);
+        height: 800px;
+    }
+    .CM_idL{
+        width: "10%";
+    }
+    .CM_textL{
+        width:"10%";
+    }
+
+   /* .CM_tableH {
+        height: 800px;
+        overflow-y:scroll;
+    }*/
+    .CM_leftbar{
+        height: 700px;
+        overflow-y: scroll;
+    }
+    .pt10{
+        padding-top: 10px;
+    }</style><div ng-controller="traditionalSyndromeController"><div class="row"><div class="col-xs-12 col-sm-6 col-md-3 col-lg-3"><div class="widget"><div class="widget-header bordered-top bordered-blue"><i class="widget-icon fa fa-list"></i> <span class="widget-caption">中医妇科</span></div><div class="widget-body" style="display: block"><div class="row"><div class="col-xs-12 col-sm-6"><h4><label><input name="form-field-radio" type="radio" ng-click="showlevel4('中医妇科','overview','')" checked="checked"> <span class="text"><a>概述</a></span></label></h4><!-- <h4><a ng-click = "showlevel4('中医妇科','overview','')">概述</a></h4> --></div><div class="col-xs-12 col-sm-6"><h4><label><input name="form-field-radio" type="radio" ng-click="showlevel4('中医妇科','妇科疾病','')"> <span class="text"><a>妇科疾病</a></span></label></h4><!--  <h4><a ng-click = "showlevel4('中医妇科','妇科疾病','')">妇科疾病</a></h4> --></div></div></div></div></div><div class="col-xs-12 col-sm-6 col-md-3 col-lg-3"><div class="widget"><div class="widget-header bordered-top bordered-blue"><i class="widget-icon fa fa-list"></i> <span class="widget-caption">中医诊断</span></div><div class="widget-body" style="display: block"><div class="row"><div class="col-xs-12 col-sm-6"><h4><label><input name="form-field-radio" type="radio" ng-click="showlevel4('中医诊断','辨证','')"> <span class="text"><a>辨证</a></span></label></h4><!--  <h4><a ng-click = "showlevel4('中医诊断','辨证','')">辨证</a></h4> --></div><div class="col-xs-12 col-sm-6"><h4><label><input name="form-field-radio" type="radio" ng-click="showlevel4('中医诊断','常见病','')"> <span class="text"><a>常见病</a></span></label></h4><!-- <h4><a ng-click = "showlevel4('中医诊断','常见病','')">常见病</a></h4> --></div></div></div></div></div><div class="col-xs-12 col-sm-6 col-md-3 col-lg-3"><div class="widget"><div class="widget-header bordered-top bordered-blue"><i class="widget-icon fa fa-list"></i> <span class="widget-caption">中医儿科</span></div><div class="widget-body" style="display: block"><div class="row"><div class="col-xs-12 col-sm-6"><h4><label><input name="form-field-radio" type="radio" ng-click="showlevel4('中医儿科','overview','')"> <span class="text"><a>概述</a></span></label></h4><!-- <h4><a ng-click = "showlevel4('中医儿科','overview','')">概述</a></h4> --></div><div class="col-xs-12 col-sm-6"><h4><label><input name="form-field-radio" type="radio" ng-click="showlevel4('中医儿科','各科疾病','')"> <span class="text"><a>儿科疾病</a></span></label></h4><!-- <h4><a ng-click = "showlevel4('中医儿科','各科疾病','')">儿科疾病</a></h4> --></div></div></div></div></div><div class="col-xs-12 col-sm-6 col-md-3 col-lg-3"><div class="widget"><div class="widget-header bordered-top bordered-blue"><i class="widget-icon fa fa-list"></i> <span class="widget-caption">中医内科</span></div><div class="widget-body" style="display: block"><div class="row"><div class="col-xs-12 col-sm-6"><h4><label><input name="form-field-radio" type="radio" ng-click="showlevel4('中医内科','常见症状','')"> <span class="text"><a>常见症状</a></span></label></h4><!-- <h4><a ng-click = "showlevel4('中医内科','常见症状','')">常见症状</a></h4> --></div><div class="col-xs-12 col-sm-6"><h4><label><input name="form-field-radio" type="radio" ng-click="showlevel4('中医内科','各科疾病','')"> <span class="text"><a>内科疾病</a></span></label></h4><!--  <h4><a ng-click = "showlevel4('中医内科','各科疾病','{{index}}')">内科疾病</a></h4> --></div></div></div></div></div></div><div class="row"><div class="col-xs-12 col-md-12"><div class="widget"><div class="widget-header"><!-- <span class="widget-caption">{{class3}}</span> --><div class="widget-buttons"><a href="" widget-maximize ng-click="isMax = !isMax;RenderBubbleChart();"></a> <a href="" widget-collapse></a> <a href="" widget-dispose></a></div></div><div class="widget-body CM_tableH"><table class="table table-bordered table-hover"><thead><tr><th ng-repeat="column in vm.columns" ng-click="vm.sort.toggle(column)" class="CM_textL">{{column.label}}</th></tr></thead><tbody><tr><td class="CM_idL hidden"><input type="text" ng-model="vm.filter.Zid" class="form-control"></td><td class="CM_textL"><input type="text" ng-model="vm.filter.Name" class="form-control" placeholder="名称"></td><td class="CM_textL"><input type="text" ng-model="vm.filter.Class1" class="form-control" placeholder="一级类别"></td><td class="CM_textL"><input type="text" ng-model="vm.filter.Class2" class="form-control" placeholder="二级类别"></td><td class="CM_textL"><input type="text" ng-model="vm.filter.Class3" class="form-control" placeholder="三级类别"></td><td class="CM_textL"><input type="text" ng-model="vm.filter.Class4" class="form-control" placeholder="四级类别"></td></tr><tr du-smooth-scroll="{{item.Zid}}" du-scrollspy id="{{item.Zid}}" ng-mouseover="gridMouseover(item.Zid)" ng-mouseleave="gridMouseleave(item.Zid)" ng-click="showdetails('zhongyi',item.Zid)" ng-repeat="item in vm.items|filter:vm.filter"><td class="CM_idL hidden"><span>{{item.Zid}}</span></td><td class="CM_textL"><span>{{item.Name}}</span></td><td class="CM_textL"><span>{{item.Class1}}</span></td><td class="CM_textL"><span>{{item.Class2}}</span></td><td class="CM_textL"><span>{{item.Class3}}</span></td><td class="CM_textL"><span>{{item.Class4}}</span></td></tr></tbody></table><div class="row pt10"><ul class="pager"><li ng-class="{{vm.pageList[0]['diaplay']}}" ng-click="pages(0)"><a href="">首页</a></li><li ng-class="{{vm.pageList[1]['diaplay']}}" ng-click="pages(1)"><a href="">← 上一页</a></li><li ng-class="{{vm.pageList[2]['diaplay']}}" ng-click="pages(2)"><a href="">下一页 →</a></li><li ng-class="{{vm.pageList[3]['diaplay']}}" ng-click="pages(3)"><a href="">末页</a></li><li><span>第{{vm.pageNumber + 1}}页，共{{vm.pp}}页，{{vm.totalNumber}}条</span></li></ul></div></div></div></div></div><!-- 模态框（Modal） --><!--<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true" >
+    <div class="modal-dialog" style="width:70%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 style="color: #3c8dbc; text-align:center " class="modal-title bigtitle" id="myModalLabel">{{Name}}</h2>
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-hidden="true">
+                </button>
+            </div>
+            <div class="modal-body" du-scroll-container>
+                <div>
+                    <div class = "col-sm-3 col-md-3 col-lg-3" role="complementary">
+                        <ul  class="nav nav-list bs-docs-sidenav affix CM_leftbar" id="gundongtiao">
+                            <div ng-repeat = "(indexs,items) in datails">
+                                <div ng-repeat="(index,iterm) in items" >
+                                    <li class="addAHover modalMenu" href="#{{index}}" ng-if="index !== 'temp'" du-smooth-scroll du-scrollspy>
+                                        <a >
+                                            <i class="fa fa-fw fa-chevron-right iconss"></i>
+                                            {{index}}
+                                        </a>
+                                    </li>
+                                </div>
+                            </div>
+                        </ul>
+                    </div>
+                    <div class = "col-sm-9 col-md-9 col-lg-9" role="main">
+                        <div ng-repeat = "(indexs,items) in datails">
+                            <div ng-repeat="(index,item) in items">
+                                <h3 id = '{{index}}' style = "color: #3c8dbc;" ng-if = "index != 'temp'">{{index}}</h3>
+                                <span ng-repeat="(ii,it) in item">
+                        &nbsp&nbsp{{it[1]}}
+                    </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>&lt;!&ndash; /.modal-content &ndash;&gt;
+    </div>&lt;!&ndash; /.modal &ndash;&gt;
+</div>
+</div>--><!-- <style>
+.cm_h200 {
+    height:200px;
+}
+.cm_ml20{
+    margin-left: 20px;
+}
+</style>
+<div class="row">
+    <div class="col-lg-6 col-sm-6 col-xs-12 ">
+        <div class="widget">
+            <div class="widget-header bordered-top bordered-blue">
+                <i class="widget-icon fa  fa-list"></i>
+                <span class="widget-caption">中医妇科
+                </span>
+            </div>
+            <div class="widget-body cm_h200" style="display: block;">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4><a ng-click = "showlevel4('中医妇科','overview','')">概述</a></h4>
+                        <h4>妇科疾病:</h4>
+                    </div>
+                    <div class="col-sm-2 cm_ml20" ng-repeat = "(index,item) in traSearchTree['中医妇科']['妇科疾病']">
+                        <a ng-click = "showlevel4('中医妇科','妇科疾病','{{index}}')">
+                            <p class = "text-primary">{{index}}</p>
+                        </a>
+                    </div>     
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6 col-sm-6 col-xs-12">
+        <div class="widget">
+            <div class="widget-header bordered-top bordered-blue">
+                <i class="widget-icon fa  fa-list"></i>
+                <span class="widget-caption">中医诊断</span>
+            </div>
+            <div class="widget-body cm_h200" style="display: block;">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4>辨证:</h4>
+                    </div>
+                    <div class="col-sm-2 cm_ml20" ng-repeat = "(index,item) in traSearchTree['中医诊断']['辨证']">
+                            <a ng-click = "showlevel4('中医诊断','辨证','{{index}}')">{{index}}</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4>常见病:</h4>
+                    </div>
+                    <div class="col-sm-2 cm_ml20" ng-repeat = "(index,item) in traSearchTree['中医诊断']['常见病']">
+                        <a ng-click = "showlevel4('中医诊断','常见病','{{index}}')">
+                            <p class = "text-primary">{{index}}</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6 col-sm-6 col-xs-12">
+        <div class="widget">
+            <div class="widget-header bordered-top bordered-blue">
+                <i class="widget-icon fa  fa-list"></i>
+                <span class="widget-caption">中医儿科
+                </span>
+            </div>
+            <div class="widget-body cm_h200" style="display: block;">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4><a ng-click = "showlevel4('中医儿科','overview','')">概述</a></h4>
+                        <h4>各科疾病:</h4>
+                    </div>
+                   <div class="col-sm-2 cm_ml20" ng-repeat = "(index,item) in traSearchTree['中医儿科']['各科疾病']">
+                        <a ng-click = "showlevel4('中医儿科','各科疾病','{{index}}')">
+                            <p class = "text-primary">{{index}}</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-6 col-sm-6 col-xs-12">
+        <div class="widget">
+            <div class="widget-header bordered-top bordered-blue">
+                <i class="widget-icon fa  fa-list"></i>
+                <span class="widget-caption">中医内科
+                </span>
+            </div>
+            <div class="widget-body cm_h200" style="display: block;">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h4><a ng-click = "showlevel4('中医内科','常见症状','')">常见症状</a></h4>
+                        <h4>各科疾病:</h4>
+                    </div>
+                    <div class="col-sm-2 cm_ml20" ng-repeat = "(index,item) in traSearchTree['中医内科']['各科疾病']">
+                        <a ng-click = "showlevel4('中医内科','各科疾病','{{index}}')">
+                            <p class = "text-primary">{{index}}</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> --></div>

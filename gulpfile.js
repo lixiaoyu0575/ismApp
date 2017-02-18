@@ -21,7 +21,7 @@ gulp.task('default',function(){
 
 //****** Minify javascript and css files ******//
 gulp.task('minify', function(){
-  return gulp.src('app/*.html')
+  return gulp.src('ismApp/*.html')
 	  .pipe(useref())
 	  .pipe(gulpIf('*.js',ngAnnotate()))//specific dependengcy annotation to minify
 	  .pipe(gulpIf('*.js',uglify()))
@@ -32,7 +32,7 @@ gulp.task('minify', function(){
 
 //****** Minify html files ******//
 gulp.task('minifyHTML',['minify'],function(){
-	gulp.src(['app/views*/*.html','app/views*/**/*.html'])
+	gulp.src(['ismApp/views*/*.html','ismApp/views*/**/*.html'])
 		.pipe(htmlmin({collapseWhitespace: true}))
 		.pipe(gulp.dest('dist'));
 });
@@ -43,17 +43,17 @@ gulp.task('transferResources',function(){//just transfer static resouces to cert
 	// 	.pipe(gulp.dest('dist/css'));
 	// gulp.src('app/resources*/**/*.png')
 	// 	.pipe(gulp.dest('dist'));
-	gulp.src(['app/lib/timeline/css/icons/*.ttf','app/lib/timeline/css/icons/*.woff'])
+	gulp.src(['ismApp/lib/timeline/css/icons/*.ttf','ismApp/lib/timeline/css/icons/*.woff'])
 		.pipe(gulp.dest('dist/assets/icons'));
-	gulp.src('app/assets/fonts*/*')
+	gulp.src('ismApp/assets/fonts*/*')
 		.pipe(gulp.dest('dist/assets'));
-	gulp.src('app/data*/*')
+	gulp.src('ismApp/data*/*')
 		.pipe(gulp.dest('dist'));
 });
 
 //****** Watch any changes in source file and take actions correspondingly******//
 gulp.task('watchChanges',function () {
-	return gulp.watch(['app/*.html','app/**/*.js','app/**/**/*.js','app/**/*.css'],function (event) {
+	return gulp.watch(['ismApp/*.html','ismApp/**/*.js','ismApp/**/**/*.js','ismApp/**/*.css'],function (event) {
 		console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
 		//do something here after changes, e.g., recompile source files.
 	})
@@ -61,7 +61,7 @@ gulp.task('watchChanges',function () {
 
 //****** Optimize Images******//
 gulp.task('compressImages',function(){
-	return gulp.src(['app/assets*/img*/*.png','app/assets*/img*/**/*', 'app/assets*/resources*/*.png'])
+	return gulp.src(['ismApp/assets*/img*/*.png','ismApp/assets*/img*/**/*', 'ismApp/assets*/resources*/*.png'])
 		// .pipe(imagemin({ progressive: true }))
 		.pipe(gulp.dest('dist'));
 });
