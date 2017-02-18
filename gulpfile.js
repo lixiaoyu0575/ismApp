@@ -169,7 +169,7 @@ var jshinConfig = {
     }
 };
 gulp.task('jshint',function(){
-	return gulp.src(['app/app/**/*.js','app/app/*.'])
-		.pipe(jshint(jshinConfig))
-		.pipe(jshint.reporter('default'));
+	// return gulp.src(['app/app/**/*.js','app/app/*.'])
+	// 	.pipe(jshint(jshinConfig))
+	// 	.pipe(jshint.reporter('default'));
 });

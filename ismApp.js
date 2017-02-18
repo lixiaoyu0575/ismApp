@@ -8,7 +8,7 @@ var express = require("express"),
     app = express();
 
 
-app.set("port", process.env.PORT || 3002);
+app.set("port", process.env.PORT || 3333);
 app.use(express.static(path.join(__dirname, "ismApp")));
 
 // angular启动页
