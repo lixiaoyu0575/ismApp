@@ -1,0 +1,31 @@
+        .Advnode circle {
+           /* fill: #999;*/
+        }
+
+        .Advnode text {
+            font: 10px sans-serif;
+        }
+
+        .Advnode--internal circle {
+            /*fill: #555;*/
+        }
+
+        .Advnode--internal text {
+            text-shadow: 0 1px 0 #fff, 0 -1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff;
+        }
+
+        .AdvNodeCircle {
+            opacity: 1;
+        }
+
+        .Advlink {
+            fill: none;
+            stroke: #555;
+            stroke-opacity: 0.3;
+            stroke-width: 2px;
+        }
+
+        .Advlink:hover
+        {
+            stroke-opacity: 1;
+        }

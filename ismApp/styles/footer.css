@@ -1,0 +1,22 @@
+footer{
+    margin-top: -50px;
+    margin-left: 224px;
+    border: 0;
+    width:75%;
+    height: 50px;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    /*background-color: white;*/
+}
+
+footer li{
+    list-style-type:none;
+}
+.footerList{
+    margin-top: 10px;
+}
+.main-container{
+    min-height:100%;
+    padding-bottom: 50px;
+}

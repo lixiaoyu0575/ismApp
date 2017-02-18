@@ -1,0 +1,148 @@
+<style>
+    .gridStyle {
+        border: 1px solid rgb(212,212,212);
+        height: 800px;
+    }
+
+    .CM_idL{
+        width: "10%";
+    }
+    .CM_textL{
+        width:"15%";
+    }
+
+    .CM_tableH {
+        height: 800px;
+        overflow-y:scroll;
+    }
+    .CM_leftbar{
+        height: 700px;
+        overflow-y: scroll;
+    }
+</style>
+<div class="page-breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="fa fa-home"></i>
+            <a>{{class1}}</a>
+        </li>
+        <li>
+            <a>{{class2}}</a>
+        </li>
+        <li ng-if = "class3 != ''">
+            <a>{{class3}}</a>
+        </li>
+        <li ng-if = "class4 != ''">
+             <a>{{class4}}</a>
+        </li>
+    </ul>
+</div>
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="widget">
+            <div class="widget-header ">
+                <!-- <span class="widget-caption">{{class3}}</span> -->
+                <div class="widget-buttons">
+                    <a href="" widget-maximize ng-click="isMax = !isMax;RenderBubbleChart();"></a>
+                    <a href="" widget-collapse></a>
+                    <a href="" widget-dispose></a>
+                </div>
+            </div>
+            <div class="widget-body CM_tableH">
+               <!--  <div class="gridStyle" ng-grid="gridOptions">
+
+                </div> -->
+                  <table class="table table-bordered table-hover " >
+                    <thead>
+                    <tr>
+                        <th ng-repeat="column in vm.columns"  ng-click="vm.sort.toggle(column)"
+                            class = "CM_textL">
+                            {{column.label}}
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="CM_idL"><input type="text" ng-model="vm.filter.Zid" class="form-control"/></td>
+                        <td class="CM_textL"><input type="text" ng-model="vm.filter.Name" class="form-control"/></td>
+                        <td class="CM_textL"><input type="text" ng-model="vm.filter.Class1" class="form-control"/></td>
+                        <td class="CM_textL"><input type="text" ng-model="vm.filter.Class2" class="form-control"/></td>
+                        <td class="CM_textL"><input type="text" ng-model="vm.filter.Class3" class="form-control"/></td>
+                    </tr>
+                    <tr du-smooth-scroll={{item.Zid}} du-scrollspy
+                            id={{item.Zid}}
+                        ng-mouseover="gridMouseover(item.Zid)"
+                        ng-mouseleave="gridMouseleave(item.Zid)"
+                        ng-click="gridMouseClick(item.Zid)"
+                        ng-repeat="item in vm.items|filter:vm.filter">
+                        <td  class="CM_idL" >
+                            <span >{{item.Zid}}</span>
+                        </td>
+                        <td class="CM_textL">
+                            <span >{{item.Name}}</span>
+                        </td>
+                        <td class="CM_textL">
+                            <span >{{item.Class1}}</span>
+                        </td>
+                        <td class="CM_textL">
+                            <span >{{item.Class2}}</span>
+                        </td>
+                        <td class="CM_textL">
+                            <span >{{item.Class3}}</span>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true" >
+    <div class="modal-dialog" style="width:70%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 style="color: #3c8dbc; text-align:center " class="modal-title bigtitle" id="myModalLabel">{{Name}}</h2>
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-hidden="true">
+                </button>
+            </div>
+            <div class="modal-body" du-scroll-container>
+                <div>
+                    <div class = "col-sm-3 col-md-3 col-lg-3" role="complementary">
+                        <ul  class="nav nav-list bs-docs-sidenav affix CM_leftbar" id="gundongtiao">
+                            <div ng-repeat = "(indexs,items) in datails">
+                            <!--{{items}}-->
+
+                                <div ng-repeat="(index,iterm) in items" >
+                                    <li class="addAHover modalMenu" href="#{{index}}" ng-if="index !== 'temp'" du-smooth-scroll du-scrollspy>
+                                        <a >
+                                            <i class="fa fa-fw fa-chevron-right iconss"></i>
+                                            {{index}}
+                                        </a>
+                                    </li>
+                                </div>
+                                <!--<li ng-click="scrollto('{{index}}')"  ng-if ="index != 'temp'" class = "list-group-item">
+                                    <a>{{index}}</a>
+                                    <i class = "fa fa-fw fa-chevron-right iconss">
+                                    </i>
+                                </li>-->
+                            </div>
+                        </ul>
+                    </div>
+                    <div class = "col-sm-9 col-md-9 col-lg-9" role="main">
+                        <div ng-repeat = "(indexs,items) in datails">
+                            <div ng-repeat="(index,item) in items">
+                                <h3 id = '{{index}}' style = "color: #3c8dbc;" ng-if = "index != 'temp'">{{index}}</h3>
+                                <span ng-repeat="(ii,it) in item">
+                        &nbsp&nbsp{{it[1]}}
+                    </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>

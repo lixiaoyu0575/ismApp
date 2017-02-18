@@ -1,0 +1,387 @@
+<style>
+    .gridStyle {
+        border: 1px solid rgb(212,212,212);
+        height: 800px;
+    }
+    .CM_idL{
+        width: "10%";
+    }
+    .CM_textL{
+        width:"10%";
+    }
+    .CM_leftbar{
+        height: 700px;
+        overflow-y: scroll;
+    }
+    .pt10{
+        padding-top: 10px;
+    }
+    .pr0{
+        padding-right: 0px;
+    }
+    .pl10{
+        padding-left: 10px;
+    }
+    .CM_mb5{
+        margin-bottom: 10px;
+    }
+</style>
+<div ng-controller="traditionalSearchController">
+<div class = "row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="widget">
+            <div class="widget-header bordered-top bordered-blue">
+                <i class="widget-icon fa  fa-list"></i>
+                <span class="widget-caption">中药检索
+                </span>
+                <div class="widget-buttons">
+                    <a href="" widget-maximize ng-click="isMax = !isMax;RenderBubbleChart();"></a>
+                    <a href="" widget-collapse></a>
+                    <a href="" widget-dispose></a>
+                </div>
+            </div>
+            <div class="widget-body" style="display: block;">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-2 pr0">
+                        
+                            <label>
+                                <input name="form-field-radio" type="radio" ng-click = "showlevel4('中药检索','常用方剂','','','')" ng-checked="true">
+                                <span class="text"><a>常用方剂</a></span>
+                            </label>
+                        
+                    </div>
+                    <div class="col-xs-12 col-sm-2 pr0">
+                        
+                            <label>
+                                <input name="form-field-radio" type="radio" ng-click = "showlevel4('中药检索','抗肿瘤验方','','','')" ng-checked="">
+                                <span class="text"><a>抗肿瘤验方</a></span>
+                            </label>
+                        
+                    </div>
+                     <div class="col-xs-12 col-sm-2 pr0">
+                        
+                            <label>
+                                <input name="form-field-radio" type="radio" ng-click = "showlevel4('中药检索','药膳食疗','','','')" ng-checked="">
+                                <span class="text"><a>药膳食疗</a></span>
+                            </label>
+                        
+                    </div>
+                     <div class="col-xs-12 col-sm-2 pr0">
+                        
+                            <label>
+                                <input name="form-field-radio" type="radio" ng-click = "showlevel4('中药检索','中药图谱','','','')" ng-checked="">
+                                <span class="text"><a>中药图谱</a></span>
+                            </label>
+                        
+                    </div>
+                    <div class="col-xs-12 col-sm-2 pr0">
+                        
+                            <label>
+                                <input name="form-field-radio" type="radio" ng-click = "showlevel4('中药检索','抗肿瘤中草药','','','')" ng-checked="">
+                                <span class="text"><a>抗肿瘤中草药</a></span>
+                            </label>
+                        
+                    </div>
+                </div>
+            </div>
+    
+        </div>
+    </div>
+    <!--  <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+        <div class="widget">
+            <div class="widget-header bordered-top bordered-blue">
+                <i class="widget-icon fa  fa-list"></i>
+                <span class="widget-caption">常用方剂
+                </span>
+                <div class="widget-buttons">
+                    <a href="" widget-maximize ng-click="isMax = !isMax;RenderBubbleChart();"></a>
+                    <a href="" widget-collapse></a>
+                    <a href="" widget-dispose></a>
+                </div>
+            </div>
+            <div class="widget-body" style="display: block;">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-3 pr0" ng-repeat = "(index,item) in traSearchTree['常用方剂']">
+                        
+                            <label>
+                                <input name="form-field-radio" type="radio" ng-click = "showlevel4('中药检索','常用方剂','{{index}}','','')" ng-checked="index == '清热'">
+                                <span class="text"><a>{{index}}</a></span>
+                            </label>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+        <div class="widget">
+            <div class="widget-header bordered-top bordered-blue">
+                <i class="widget-icon fa  fa-list"></i>
+                <span class="widget-caption">抗肿瘤验方
+                </span>
+                <div class="widget-buttons">
+                    <a href="" widget-maximize ng-click="isMax = !isMax;RenderBubbleChart();"></a>
+                    <a href="" widget-collapse></a>
+                    <a href="" widget-dispose></a>
+                </div>
+            </div>
+            <div class="widget-body" style="display: block;">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-3 pr0" ng-repeat = "(index,item) in traSearchTree['抗肿瘤验方']">
+                        
+                            <label>
+                                <input name="form-field-radio" type="radio" ng-click = "showlevel4('中药检索','抗肿瘤验方','{{index}}','','')">
+                                <span class="text"><a>{{index}}</a></span>
+                            </label>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+        <div class="widget CM_mb5">
+            <div class="widget-header bordered-top bordered-blue">
+                <i class="widget-icon fa  fa-list"></i>
+                <span class="widget-caption">抗肿瘤中草药
+                </span>
+                <div class="widget-buttons">
+                    <a href="" widget-maximize ng-click="isMax = !isMax;RenderBubbleChart();"></a>
+                    <a href="" widget-collapse></a>
+                    <a href="" widget-dispose></a>
+                </div>
+            </div>
+            <div class="widget-body" style="display: block;">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4 pr0 pl10">
+                        
+                            <label>
+                                <input name="form-field-radio" type="radio" ng-click = "showlevel4('中药检索','抗肿瘤中草药','扶正补虚类药','','')" >
+                                <span class="text"><a>扶正补虚类药</a></span>
+                            </label>
+                        
+                    </div>
+                    <div class="col-xs-12 col-sm-4 pr0 pl10">
+                        
+                            <label>
+                                <input name="form-field-radio" type="radio" ng-click = "showlevel4('中药检索','抗肿瘤中草药','外用及其他类药','','')">
+                                <span class="text"><a>外用及其他类药</a></span>
+                            </label>
+                        
+                    </div>
+                    <div class="col-xs-12 col-sm-4 pr0 pl10">
+                        
+                            <label>
+                                <input name="form-field-radio" type="radio" ng-click = "showlevel4('中药检索','抗肿瘤中草药','以毒攻毒类药','','')">
+                                <span class="text"><a>以毒攻毒类药</a></span>
+                            </label>
+                        
+                    </div>
+                    <div class="col-xs-12 col-sm-4 pr0 pl10">
+                        
+                            <label>
+                                <input name="form-field-radio" type="radio" ng-click = "showlevel4('中药检索','抗肿瘤中草药','除痰软坚类药','','')">
+                                <span class="text"><a>除痰软坚类药</a></span>
+                            </label>
+                        
+                    </div>
+                    <div class="col-xs-12 col-sm-4 pr0 pl10">
+                    
+                            <label>
+                                <input name="form-field-radio" type="radio" ng-click = "showlevel4('中药检索','抗肿瘤中草药','活血化瘀类药','','')">
+                                <span class="text"><a>活血化瘀类药</a></span>
+                            </label>
+                        
+                    </div>
+                    <div class="col-xs-12 col-sm-4 pr0 pl10">
+                        
+                            <label>
+                                <input name="form-field-radio" type="radio" ng-click = "showlevel4('中药检索','抗肿瘤中草药','清热解毒类药','','')">
+                                <span class="text"><a>清热解毒类药</a></span>
+                            </label>
+                        
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-6 col-md-3 col-lg-4">
+        <div class="widget CM_mb5">
+            <div class="widget-header bordered-top bordered-blue">
+                <i class="widget-icon fa  fa-list"></i>
+                <span class="widget-caption">药膳食疗
+                </span>
+                <div class="widget-buttons">
+                    <a href="" widget-maximize ng-click="isMax = !isMax;RenderBubbleChart();"></a>
+                    <a href="" widget-collapse></a>
+                    <a href="" widget-dispose></a>
+                </div>
+            </div>
+            <div class="widget-body" style="display: block;">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-3 pr0" ng-repeat = "(index,item) in traSearchTree['药膳食疗']">
+                        
+                            <label>
+                                <input name="form-field-radio" type="radio" ng-click = "showlevel4('中药检索','药膳食疗','{{index}}','','')">
+                                <span class="text"><a>{{index}}</a></span>
+                            </label>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="widget CM_mb5">
+            <div class="widget-header bordered-top bordered-blue">
+                <i class="widget-icon fa  fa-list"></i>
+                <span class="widget-caption">中药图谱
+                </span>
+                <div class="widget-buttons">
+                    <a href="" widget-maximize ng-click="isMax = !isMax;RenderBubbleChart();"></a>
+                    <a href="" widget-collapse></a>
+                    <a href="" widget-dispose></a>
+                </div>
+            </div>
+            <div class="widget-body" style="display: block;">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-1 pr0" ng-repeat = "(index,item) in traSearchTree['中药图谱']">
+                       
+                            <label>
+                                <input name="form-field-radio" type="radio" ng-click = "showlevel4('中药检索','中药图谱','{{index}}','','')">
+                                <span class="text"><a>{{index}}</a></span>
+                            </label>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div class="widget">
+            <div class="widget-header ">
+                <!-- <span class="widget-caption">{{class3}}</span> -->
+                <div class="widget-buttons">
+                    <a href="" widget-maximize ng-click="isMax = !isMax;RenderBubbleChart();"></a>
+                    <a href="" widget-collapse></a>
+                    <a href="" widget-dispose></a>
+                </div>
+            </div>
+            <div class="widget-body CM_tableH">
+                  <table class="table table-bordered table-hover " >
+                    <thead>
+                    <tr>
+                        <th ng-repeat="column in vm.columns"  ng-click="vm.sort.toggle(column)"
+                            class = "CM_textL">
+                            {{column.label}}
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td class="CM_idL hidden "><input type="text" ng-model="vm.filter.Zid" class="form-control"  /></td>
+                        <td class="CM_textL"><input type="text" ng-model="vm.filter.Name" class="form-control" placeholder="名称"/></td>
+                        <td class="CM_textL"><input type="text" ng-model="vm.filter.Class1" class="form-control" placeholder="一级类别"/></td>
+                        <td class="CM_textL"><input type="text" ng-model="vm.filter.Class2" class="form-control" placeholder="二级类别"/></td>
+                        <td class="CM_textL"><input type="text" ng-model="vm.filter.Class3" class="form-control" placeholder="三级类别"/></td>
+                        <!-- <td class="CM_textL"><input type="text" ng-model="vm.filter.Class3" class="form-control"/></td> -->
+                    </tr>
+                    <tr du-smooth-scroll={{item.Zid}} du-scrollspy
+                            id={{item.Zid}}
+                        ng-mouseover="gridMouseover(item.Zid)"
+                        ng-mouseleave="gridMouseleave(item.Zid)"
+                        ng-click="showdetails('zhongyi',item.Zid)"
+                        ng-repeat="item in vm.items|filter:vm.filter">
+                        <td  class="CM_idL hidden " >
+                            <span >{{item.Zid}}</span>
+                        </td>
+                        <td class="CM_textL">
+                            <span >{{item.Name}}</span>
+                        </td>
+                        <td class="CM_textL">
+                            <span >{{item.Class1}}</span>
+                        </td>
+                        <td class="CM_textL">
+                            <span >{{item.Class2}}</span>
+                        </td>
+                        <td class="CM_textL">
+                            <span >{{item.Class3}}</span>
+                        </td>
+                        <!-- <td class="CM_textL">
+                            <span >{{item.Class4}}</span>
+                        </td> -->
+                    </tr>
+                    </tbody>
+                </table>
+                <div class="row pt10">
+                    <ul class="pager">
+                        <li ng-class ="{{vm.pageList[0]['diaplay']}}" ng-click = "pages(0)"><a href="">首页</a></li>
+                        <li ng-class ="{{vm.pageList[1]['diaplay']}}" ng-click = "pages(1)"><a href="">← 上一页</a></li>
+                        <li ng-class ="{{vm.pageList[2]['diaplay']}}" ng-click = "pages(2)"><a href="">下一页 →</a></li>
+                        <li ng-class ="{{vm.pageList[3]['diaplay']}}" ng-click = "pages(3)"><a href="">末页</a></li>
+                        <li><span>第{{vm.pageNumber + 1}}页，共{{vm.pp}}页，{{vm.totalNumber}}条</span></li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true" >
+    <div class="modal-dialog" style="width:70%;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 style="color: #3c8dbc; text-align:center " class="modal-title bigtitle" id="myModalLabel">{{Name}}</h2>
+                <button type="button" class="close"
+                        data-dismiss="modal" aria-hidden="true">
+                </button>
+            </div>
+            <div class="modal-body" du-scroll-container>
+                <div>
+                    <div class = "col-sm-3 col-md-3 col-lg-3" role="complementary">
+                        <ul  class="nav nav-list bs-docs-sidenav affix CM_leftbar" id="gundongtiao">
+                            <div ng-repeat = "(indexs,items) in datails">
+                            <!--{{items}}-->
+
+                                <div ng-repeat="(index,iterm) in items" >
+                                    <li class="addAHover modalMenu" href="#{{index}}" ng-if="index !== 'temp'" du-smooth-scroll du-scrollspy>
+                                        <a >
+                                            <i class="fa fa-fw fa-chevron-right iconss"></i>
+                                            {{index}}
+                                        </a>
+                                    </li>
+                                </div>
+                                <!--<li ng-click="scrollto('{{index}}')"  ng-if ="index != 'temp'" class = "list-group-item">
+                                    <a>{{index}}</a>
+                                    <i class = "fa fa-fw fa-chevron-right iconss">
+                                    </i>
+                                </li>-->
+                            </div>
+                        </ul>
+                    </div>
+                    <div class = "col-sm-9 col-md-9 col-lg-9" role="main">
+                        <div ng-repeat = "(indexs,items) in datails">
+                            <div ng-repeat="(index,item) in items">
+                                <h3 id = '{{index}}' style = "color: #3c8dbc;" ng-if = "index != 'temp'">{{index}}</h3>
+                                <span ng-repeat="(ii,it) in item">
+                        &nbsp&nbsp{{it[1]}}
+                    </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
+    </div>
