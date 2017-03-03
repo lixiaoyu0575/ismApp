@@ -1,0 +1,92 @@
+<div ng-controller="searchingController">
+    <div id="head">
+        <div class="row" style="padding-top: 15px;padding-bottom: 15px">
+            <div class="col-md-1" align="center">
+                <a href="/#/">
+                    <img src="../../assets/img/newsLogo.jpg" width="40" height="40">
+                </a>
+            </div>
+            <div class="col-md-6">
+                <div id="custom-search-input">
+                    <div class="input-group col-md-12">
+                        <input class="form-control input-sm" placeholder="Search start here"
+                               ng-model="searchString" class="form-control " ng-class="{true:'itemsLoading'}[isItemsLoading]" typeahead-min-length="0"
+                               typeahead-on-select="searchItem(0, searchString)" uib-typeahead="state for state in getStates($viewValue)"/>
+                        <span class="input-group-btn">
+                        <button class="btn btn-sm" type="button" ng-click="searchItem(0, searchString)">
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-default" ng-click="toAnalyse()">统计分析</button>
+            </div>
+        </div>
+        <!--<div style="width: 20px">-->
+        <!--<p>TEST</p>-->
+        <!--</div>-->
+    </div>
+    <div class="container">
+        <div ng-if="isListInited === 1" class="row clearfix" style="margin-top: 80px">
+            <div class="col-md-2 column">
+                <select class="form-control" ng-model="timeSelected" ng-options="time.label for time in timeFilter" ng-change="searchItem(0, searchString)">
+                    <option value="">-- 过滤时间 --</option>
+                </select>
+            </div>
+            <div class="col-md-2 column">
+                <select class="form-control" ng-model="typeSelected" ng-options="type for type in typeFilter" ng-change="searchItem(0, searchString)">
+                    <option value="">-- 过滤类别 --</option>
+                </select>
+            </div>
+            <!--<div class="col-md-4 column">-->
+                <!--<div class="btn-group">-->
+                    <!--<button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-left"></em> 左</button> <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-center"></em> 中</button> <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-right"></em> 右</button> <button class="btn btn-default" type="button"><em class="glyphicon glyphicon-align-justify"></em> 全</button>-->
+                <!--</div>-->
+            <!--</div>-->
+        </div>
+
+        <div class="row clearfix">
+            <br>
+            <div class="col-md-8 column">
+                <div id="test"></div>
+            </div>
+            <div class="col-md-4 column">
+            </div>
+        </div>
+        <nav ng-if="isListInited === 1" style="margin-top:10px;text-align:center">
+            <ul class="pagination" style="cursor: pointer">
+                <li ng-class="{disabled:currentPage === 1}" ng-click="changePage(currentPage - 1)"><a  aria-label="Previous" ><span aria-hidden="true">上一页</span></a></li>
+                <li ng-class="{active:$index === currentPageIndex}" ng-repeat="page in pages" ng-click="changePage(page)"><a >{{page}}</a></li>
+                <li ng-class="{disabled:currentPage === totalPages}" ng-click="changePage(currentPage + 1)"><a  aria-label="Next"><span aria-hidden="true">下一页</span></a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <br><br>
+    <!--<div class="container" style="position: relative;margin-top: 12%;">-->
+        <!--<div class="row">-->
+            <!--<div class="col-md-3">-->
+            <!--</div>-->
+            <!--<div class="col-md-6" align="center">-->
+                <!--&lt;!&ndash;<h2>LOGO here</h2>&ndash;&gt;-->
+                <!--TEST!!-->
+                <!--<img src="../../assets/img/newsLogo.jpg" width="180" height="180">-->
+                <!--<div id="custom-search-input">-->
+                    <!--<div class="input-group col-md-12">-->
+                        <!--<input type="text" class="form-control input-lg" placeholder="Search start here" />-->
+                        <!--<span class="input-group-btn">-->
+                        <!--<button class="btn btn-lg" type="button">-->
+                            <!--<i class="glyphicon glyphicon-search"></i>-->
+                        <!--</button>-->
+                    <!--</span>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-md-3"></div>-->
+        <!--</div>-->
+    <!--</div>-->
+</div>

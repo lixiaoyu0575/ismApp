@@ -11,7 +11,5 @@ angular.module('app', [
     'ncy-angular-breadcrumb',
     'ui.bootstrap',
     'ui.utils',
-    'oc.lazyLoad',
-    'integralui',
-    'ngGrid'
+    'oc.lazyLoad'
 ]);

@@ -60,7 +60,7 @@
                 console.log($rootScope.nodeToken);
                 //console.log(vm.returnPage);
                 $location.search('page', null);
-                $location.path('/app/mkdisease');
+                $location.path('/app/statistic');
                 //$location.path(vm.returnPage);
             });
         };

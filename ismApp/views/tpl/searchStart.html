@@ -1,15 +1,18 @@
-<div ng-controller="searchStartController as ssc">
-    <div class="container" style="position: relative;margin-top: 15%;">
+<div ng-controller="searchStartController">
+    <div class="container" style="position: relative;margin-top: 12%;">
         <div class="row">
             <div class="col-md-3">
             </div>
-            <div class="col-md-6">
-                <h2>LOGO here</h2>
+            <div class="col-md-6" align="center">
+                <!--<h2>LOGO here</h2>-->
+                <img src="../../assets/img/newsLogo.jpg" width="180" height="180" style="margin-bottom: 20px;">
                 <div id="custom-search-input">
                     <div class="input-group col-md-12">
-                        <input type="text" class="form-control input-lg" placeholder="Search start here" />
+                        <input class="form-control input-lg" placeholder="Search start here"
+                               ng-model="searchString" class="form-control " ng-class="{true:'itemsLoading'}[isItemsLoading]" typeahead-min-length="0"
+                               typeahead-on-select="searchItem(searchString)" uib-typeahead="state for state in getStates($viewValue)"/>
                         <span class="input-group-btn">
-                        <button class="btn btn-lg" type="button">
+                        <button class="btn btn-lg" type="button" ng-click="toSearch()">
                             <i class="glyphicon glyphicon-search"></i>
                         </button>
                     </span>

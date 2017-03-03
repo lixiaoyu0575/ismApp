@@ -1,4 +1,17 @@
 /*ISM style*/
+em {
+    color: #cc0000;
+}
+#head{
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+    width: 100%;
+    z-index: 301;
+    min-width: 1000px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #ebebeb;
+    position: fixed;
+}
 #custom-search-input{
     padding: 3px;
     border: solid 1px #E4E4E4;
