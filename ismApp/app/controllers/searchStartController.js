@@ -6,10 +6,6 @@ angular.module("app")
     .controller("searchStartController", searchStartController);
 function searchStartController($rootScope, $scope, $location, $http) {
     console.log("searchStartController");
-    $scope.toSearch = function () {
-        console.log("clicked to search");
-        $location.path("/searching");
-    };
     $scope.isItemsLoading = false;
     $scope.searchString = "";
     $scope.searchItem = function (searachStr) {

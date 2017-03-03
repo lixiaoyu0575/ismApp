@@ -9,14 +9,8 @@ function searchingController($rootScope, $scope, $http, $location, $compile) {
         pageOffset = 10,
         rowOffset = 10,
         count,
-        obj,
-        key,
         i;
     console.log("searchingController");
-    $scope.toSearch = function () {
-        console.log("clicked to search");
-        $location.path("/searching");
-    };
     $scope.isListInited = 0;
     $scope.isItemsLoading = false;
     $scope.searchString = $rootScope.curSearchItem || "";
@@ -25,7 +19,7 @@ function searchingController($rootScope, $scope, $http, $location, $compile) {
     $scope.currentPageIndex = 0;
     $scope.pages = [];
     $scope.totalPages = 10000;
-    // $scope.typeSelected = "";
+    $scope.typeSelected = null;
     // $scope.newsItems = '<font color="#CC0000">官网</font>';
     $scope.searchItem = function (rowStart, searachStr) {
         var typeSelected = $scope.typeSelected || "不限",
@@ -35,6 +29,8 @@ function searchingController($rootScope, $scope, $http, $location, $compile) {
         }else {
             timeSelected = $scope.timeSelected.value || 0;
         }
+        console.log($scope);
+        console.log(typeSelected,timeSelected);
         console.log("to search for item");
         $http({
             method: "GET",
