@@ -2,7 +2,7 @@
     angular.module('app')
         .controller('loginCtrl', loginCtrl);
     loginCtrl.$inject = ['$location', 'authentication',"$rootScope","$http"];
-    function loginCtrl($location, authentication, $rootScope,$http) {
+    function loginCtrl($location, authentication, $rootScope, $http) {
 /*        $http.get("http://59.110.52.133:8001/consumers/admin/key-auth/")
          .success(function(response){
          console.log(response);
@@ -64,7 +64,7 @@
                 //$location.path(vm.returnPage);
             });
         };
-
+        $rootScope.pageLoading = false;
 
     }
 
