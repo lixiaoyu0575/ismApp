@@ -421,6 +421,10 @@ angular.module('app')
                     .state("app.statistic", {
                         url: "/statistic",
                         templateUrl: "views/tpl/statistic.html"
+                    })
+                    .state("app.pageRank", {
+                        url: "/pageRank",
+                        templateUrl: "views/tpl/pageRank.html"
                     });
             }
         ]

@@ -34,7 +34,7 @@ function searchingController($rootScope, $scope, $http, $location, $compile) {
             timeSelected = $scope.timeSelected.value || 0;
         }
         console.log($scope);
-        console.log(typeSelected,timeSelected);
+        console.log(typeSelected, timeSelected);
         console.log("to search for item");
         $http({
             method: "GET",
@@ -61,8 +61,8 @@ function searchingController($rootScope, $scope, $http, $location, $compile) {
                     $scope.isItemsLoading = false;
                     console.log(res.data.Results);
                     $scope.newsItems = res.data.Results;
-                    $scope.newsItems = getNewsList(res.data.Results);
-                    angular.element("#test").html($compile($scope.newsItems)($rootScope));
+                    $scope.html = getNewsList(res.data.Results);
+                    angular.element("#test").html($compile($scope.html)($scope));
                 }
             });
     };
@@ -84,20 +84,28 @@ function searchingController($rootScope, $scope, $http, $location, $compile) {
                 }
             });
     };
+    $scope.recordUrl = function (url) {
+        console.log(url);
+    };
     $rootScope.pageLoading = false;
     function getNewsList(newsItems) {
         var html = "",
             i = 0,
             l = newsItems.length;
         for (i = 0; i < l; i++) {
-            html += "<dl><a href='" + newsItems[i].Url + "' target='_blank'>" +
+            html += "<dl><a href='" + newsItems[i].Url + "' target='_blank' ng-click=\"recordUrl('" +
+                newsItems[i].Url + "')\">" +
                     "<h4><u>" + newsItems[i].Title + "</u></h4></a><dd>" +
                     newsItems[i].Content + "</dd><dd>来源: " +
                     newsItems[i].Website + "</dd><dd>时间: " +
                     newsItems[i].Time + "</dd></dl><br>";
         }
+        html += "<button ng-click='test()'>test</button>"
         return html;
     }
+    $scope.test = function () {
+        console.log("test");
+    };
     $scope.toAnalyse = function () {
         $location.path("/login");
     };
