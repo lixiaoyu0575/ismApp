@@ -41,4 +41,4 @@ angular.module('app').factory('httpReject',["$rootScope",function ($rootScope) {
         }
     };
     return httpReject;
-}])
+}]);

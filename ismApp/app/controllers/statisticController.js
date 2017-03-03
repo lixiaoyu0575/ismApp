@@ -3,7 +3,7 @@
  */
 "use strict";
 angular.module("app")
-    .controller("statiticController", statiticController)
+    .controller("statiticController", statiticController);
 function statiticController($scope, $rootScope) {
     var typeNumChart = echarts.init(document.getElementById("statisticTypeNum")),
         timeNumChart = echarts.init(document.getElementById("statisticTimeNum")),
