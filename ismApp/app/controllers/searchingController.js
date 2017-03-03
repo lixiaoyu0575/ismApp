@@ -21,9 +21,13 @@ function searchingController($rootScope, $scope, $http, $location, $compile) {
     $scope.totalPages = 10000;
     $scope.typeSelected = null;
     // $scope.newsItems = '<font color="#CC0000">官网</font>';
-    $scope.searchItem = function (rowStart, searachStr) {
+    $scope.searchItem = function (rowStart, searchStr) {
         var typeSelected = $scope.typeSelected || "不限",
             timeSelected;
+        console.log(searchStr);
+        if (!searchStr) {
+            return;
+        }
         if ($scope.timeSelected === null) {
             timeSelected = 0;
         }else {
@@ -34,7 +38,7 @@ function searchingController($rootScope, $scope, $http, $location, $compile) {
         console.log("to search for item");
         $http({
             method: "GET",
-            url: "http://202.117.54.88:8000/es/search/?q={%22QueryString%22:%22" + searachStr +
+            url: "http://202.117.54.88:8000/es/search/?q={%22QueryString%22:%22" + searchStr +
                 "%22,%22Start%22:" + rowStart + ",%22Offset%22:" + rowOffset +
                 ",%22Filter%22:{%22Time%22:" + timeSelected +
                 ",%22Type%22:[%22" + typeSelected + "%22]}}"
@@ -62,7 +66,7 @@ function searchingController($rootScope, $scope, $http, $location, $compile) {
                 }
             });
     };
-    $scope.searchItem($scope.searchString);
+    $scope.searchItem(0, $scope.searchString);
     $scope.getStates = function (inputStr) {
         $scope.isItemsLoading = true;
         return $http({
