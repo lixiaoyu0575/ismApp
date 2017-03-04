@@ -100,12 +100,8 @@ function searchingController($rootScope, $scope, $http, $location, $compile) {
                     newsItems[i].Website + "</dd><dd>时间: " +
                     newsItems[i].Time + "</dd></dl><br>";
         }
-        html += "<button ng-click='test()'>test</button>"
         return html;
     }
-    $scope.test = function () {
-        console.log("test");
-    };
     $scope.toAnalyse = function () {
         $location.path("/login");
     };
