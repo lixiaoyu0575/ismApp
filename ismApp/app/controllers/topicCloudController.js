@@ -5,8 +5,8 @@ function topicCloudController($scope, $rootScope) {
     var topicCloudChart = echarts.init(document.getElementById("topicCloud")),
         option = {
         title:{
-            text:"今日话题词云图",
-            link:'https://github.com/ecomfe/echarts-wordcloud'
+            text:"今日话题词云图"
+            // link:'https://github.com/ecomfe/echarts-wordcloud'
             // subtext: 'data-visual.cn',
             // sublink:'http://data-visual.cn',
         },
