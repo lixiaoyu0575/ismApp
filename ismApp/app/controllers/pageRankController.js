@@ -37,6 +37,10 @@ function pageRankController($scope, $rootScope) {
                 return Math.log(d.value + 1) / Math.log(100) * 5 + 2;
             })
             .attr("fill", function(d) { return color(d.group); })
+            .on("click", function (d) {
+                window.open(d.id);
+                console.log(d.id);
+            })
             .call(d3.drag()
                 .on("start", dragstarted)
                 .on("drag", dragged)
