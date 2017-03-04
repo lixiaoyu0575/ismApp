@@ -425,6 +425,10 @@ angular.module('app')
                     .state("app.pageRank", {
                         url: "/pageRank",
                         templateUrl: "views/tpl/pageRank.html"
+                    })
+                    .state("app.topicCloud", {
+                        url: "/topicCloud",
+                        templateUrl: "views/tpl/topicCloud.html"
                     });
             }
         ]
